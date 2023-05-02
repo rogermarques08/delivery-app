@@ -1,4 +1,4 @@
-/* eslint-disable max-lines-per-function */
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('sales', {
@@ -33,7 +33,7 @@ module.exports = {
       totalPrice: {
         field: 'total_id',
         allowNull: true,
-        type: Sequelize.DECIMAL(10, 2),
+        type: Sequelize.DECIMAL(9, 2),
       },
       deliveryAddress: {
         field: 'delivery_address',
