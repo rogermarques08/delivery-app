@@ -22,23 +22,23 @@ services:
       - 3001:3001
     platform: linux/x86_64
     working_dir: /app-backend
-    # Caso queira que o container esteja atualizado durante o desenvolvimento, sem que você precise ficar fazendo down e up dos containers, descomente as 3 linhas abaixo
-    command: dev 
+    # Caso queira que o container esteja atualizado durante o desenvolvimento, sem que você precise ficar fazendo down e up dos containers, descomente as 3 linhas abaixo 
     volumes: 
       - ./back-end/src:/app-backend/src
     depends_on:
       db:
         condition: service_healthy
     environment:
-      - PORT=3001
+      - API_PORT=3001
+      - NODE_ENV=development
       - JWT_SECRET=jwt_secret
       # Os dados abaixo se referem ao container `db`
       # Dica: Relembre aqui da comunicação interna entre containers
       - MYSQL_USER=root
-      - DB_PASS=password
-      - MYSQL_HOST=localhost
-      - MYSQL_PORT=3002
+      - MYSQL_PASSWORD=password
+      - MYSQL_HOST=db
       - MYSQL_DB_NAME=delivery-app
+      - MYSQL_PORT=3306
     healthcheck:
       test: ["CMD", "lsof", "-t", "-i:3001"] # Caso utilize outra porta interna para o back, altere ela aqui também
       timeout: 10s
@@ -48,9 +48,11 @@ services:
     container_name: db
     platform: linux/x86_64
     ports:
-      - 3002:3306
+      - 3306:3306
+      # - 33060:33060
     environment:
-      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DB_NAME=delivery-app
     restart: 'always'
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"] # Deve aguardar o banco ficar operacional
@@ -58,3 +60,4 @@ services:
       retries: 5
     cap_add:
       - SYS_NICE # Deve omitir alertas menores
+
