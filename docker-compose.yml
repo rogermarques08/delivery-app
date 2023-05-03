@@ -17,6 +17,8 @@ services:
       retries: 5
   backend:
     container_name: app_backend
+    # Comente a linha abaixo caso queira rodar o ambiente normal, essa linha é um override do entrypoint montado na Dockerfile do serviço app_backend
+    command: dev
     build: ./back-end
     ports:
       - 3001:3001
