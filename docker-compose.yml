@@ -36,7 +36,7 @@ services:
       # Dica: Relembre aqui da comunicação interna entre containers
       - MYSQL_USER=root
       - DB_PASS=password
-      - MYSQL_HOST=localhost
+      - MYSQL_HOST=db
       - MYSQL_PORT=3002
       - MYSQL_DB_NAME=delivery-app
     healthcheck:
@@ -48,9 +48,9 @@ services:
     container_name: db
     platform: linux/x86_64
     ports:
-      - 3002:3306
+      - 3306:3306
     environment:
-      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD = password
     restart: 'always'
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"] # Deve aguardar o banco ficar operacional
