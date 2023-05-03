@@ -15,14 +15,5 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'sales',
   });
 
-  // Sale.associate = (models) => {
-  //   models.User.belongsToMany(models.User,
-  //     {
-  //       as: 'users',
-  //       through: Sale,
-  //       foreignKey: 'userId',
-  //       otherKey: 'sellerId',
-  //     });
-  // }
   return Sale;
 }
