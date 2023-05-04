@@ -18,14 +18,5 @@ module.exports = (sequelize, DataTypes) => {
   },
 );
 
-  // Sale.associate = (models) => {
-  //   models.User.belongsToMany(models.User,
-  //     {
-  //       as: 'users',
-  //       through: Sale,
-  //       foreignKey: 'userId',
-  //       otherKey: 'sellerId',
-  //     });
-  // }
   return Sale;
 };
