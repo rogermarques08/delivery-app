@@ -15,7 +15,7 @@ function Login() {
     const maxLength = 6;
 
     const isEmailValid = emailRegex.test(form.email);
-    const isPasswordValid = form.password.length > 0 && form.password.length < maxLength;
+    const isPasswordValid = form.password.length >= maxLength;
 
     return isEmailValid && isPasswordValid;
   };
