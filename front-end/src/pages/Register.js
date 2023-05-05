@@ -11,6 +11,18 @@ function Register() {
     setForm({ ...form, [name]: value });
   };
 
+  const validateForm = () => {
+    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    const minPassLength = 6;
+    const minNameLength = 12;
+
+    const isEmailValid = emailRegex.test(form.email);
+    const isPasswordValid = form.password.length >= minPassLength;
+    const isNameValid = form.name.length >= minNameLength;
+
+    return isEmailValid && isPasswordValid && isNameValid;
+  };
+
   return (
     <div>
       <h2>Cadastro</h2>
@@ -45,10 +57,11 @@ function Register() {
         <button
           type="button"
           data-testid="common_register__button-register"
+          disabled={ !validateForm() }
         >
           CADASTRO
         </button>
-        <p data-testid="common_register__element-invalid_register ">error message</p>
+        <p data-testid="common_register__element-invalid_register">error message</p>
       </form>
     </div>
   );
