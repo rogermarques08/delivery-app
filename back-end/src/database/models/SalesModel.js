@@ -12,11 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     status: { type: DataTypes.STRING, allowNull: false },
   },
 {
-    timestamps: false,
+    timestamps: true,
     underscored: true,
     tableName: 'sales',
+    createdAt: 'saleDate',
+    updatedAt: false,
   },
 );
-
   return Sale;
 };

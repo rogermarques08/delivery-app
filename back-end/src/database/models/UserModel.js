@@ -1,3 +1,5 @@
+const Sale = require('./SalesModel');
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
@@ -12,9 +14,24 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'users',
   })
 
-  // User.associate = (models) => {
-  //   User.hasMany(models.CreateSale,
-  //     {foreignKey: 'userId', as: 'createSales'});
-  // }
+  User.associate = (models) => {
+    User.hasMany(models.Sale,
+      {foreignKey: 'userId', as: 'user'});
+  }
+
+  User.associate = (models) => {
+    User.hasMany(models.Sale,
+      {foreignKey: 'sellerId', as: 'seller'});
+  }
+
+  Sale.associate = (models) => {
+    Sale.belongsTo(models.User,
+      {foreignKey: 'userId', as: 'user'});
+  }
+
+  Sale.associate = (models) => {
+    Sale.belongsTo(models.User,
+      {foreignKey: 'sellerId', as: 'seller'});
+  }
   return User;
 }
