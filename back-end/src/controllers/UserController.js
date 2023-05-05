@@ -28,7 +28,12 @@ const createNewUser = async (req, res) => {
   if (hasEmail) {
     return res.status(409).json({ message: 'Conflict' });
   }
-  await UserService.createNewUser({ name, email, password, role });
+  await UserService.createNewUser({ 
+    name, 
+    email, 
+    password: md5(password),
+    role,
+   });
   return res.status(201).json({ message: 'Created' });
 } catch (e) {
   console.log(e);
