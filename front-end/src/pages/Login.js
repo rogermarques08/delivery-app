@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import getData from '../utils/getData';
 
 function Login() {
   const [form, setForm] = useState({
     email: '',
     password: '',
   });
+  const [showError, setShowError] = useState(false);
 
   const handleChange = ({ target: { value, name } }) => {
     setForm({ ...form, [name]: value });
@@ -18,6 +20,12 @@ function Login() {
     const isPasswordValid = form.password.length >= maxLength;
 
     return isEmailValid && isPasswordValid;
+  };
+
+  const login = async () => {
+    const data = await getData('POST', form);
+    console.log(data);
+    if (data.message) setShowError(true);
   };
 
   return (
@@ -47,6 +55,7 @@ function Login() {
           type="button"
           data-testid="common_login__button-login"
           disabled={ !validateForm() }
+          onClick={ login }
         >
           LOGIN
         </button>
@@ -57,7 +66,9 @@ function Login() {
           Ainda não tenho conta
         </button>
       </form>
-      <p data-testid="common_login__element-invalid-email ">error message</p>
+      {showError && (
+        <p data-testid="common_login__element-invalid-email">error message</p>
+      )}
     </div>
   );
 }
