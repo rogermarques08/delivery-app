@@ -1,22 +1,23 @@
+// const crypto = require('crypto');
+const md5 = require('md5');
 const UserService = require('../services/UserService');
-
-const emailPass = (email, password) => email && password;
-
-console.log('controllerLogin', emailPass);
 
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    if (!emailPass(email, password)) {
+    const user = await UserService.login(email);
+    if (!user) {
       return res.status(404).json({ message: 'Not found' });
     }
-    const user = await UserService.login(email, password);
+    if (user.password !== md5(password)) {
+      return res.status(404).json({ message: 'Not found' });
+    }
       return res.status(200).json(user);
   } catch (e) {
     console.log(e);
     return res.status(500).json({ message: 'internal error', error: e.message });
   }
 };
-
+ 
 module.exports = { login };
