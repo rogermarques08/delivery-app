@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom';
 import getData from '../utils/getData';
 
 function Register() {
@@ -8,6 +8,7 @@ function Register() {
     email: '',
     password: '',
   });
+  const [showError, setShowError] = useState(false);
 
   const history = useHistory();
 
@@ -74,7 +75,9 @@ function Register() {
         >
           CADASTRO
         </button>
-        <p data-testid="common_register__element-invalid_register">error message</p>
+        {showError && (
+          <p data-testid="common_register__element-invalid_register">error message</p>
+        )}
       </form>
     </div>
   );
