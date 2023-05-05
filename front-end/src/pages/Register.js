@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import getData from '../utils/getData';
 
-function Login() {
+function Register() {
   const [form, setForm] = useState({
+    name: '',
     email: '',
     password: '',
   });
@@ -17,16 +18,18 @@ function Login() {
 
   const validateForm = () => {
     const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-    const maxLength = 6;
+    const minPassLength = 6;
+    const minNameLength = 12;
 
     const isEmailValid = emailRegex.test(form.email);
-    const isPasswordValid = form.password.length >= maxLength;
+    const isPasswordValid = form.password.length >= minPassLength;
+    const isNameValid = form.name.length >= minNameLength;
 
-    return isEmailValid && isPasswordValid;
+    return isEmailValid && isPasswordValid && isNameValid;
   };
 
   const login = async () => {
-    const data = await getData('POST', form, '/login');
+    const data = await getData('POST', form, '/register');
 
     if (data.message) return setShowError(true);
 
@@ -35,48 +38,49 @@ function Login() {
 
   return (
     <div>
-      <h1>LOGO</h1>
-      <h2>Nome do APP</h2>
+      <h2>Cadastro</h2>
       <form>
-        <label htmlFor="common_login__input-email">
-          Login
+        <label htmlFor="common_register__input-name">
+          Name
           <input
             type="text"
-            name="email"
-            data-testid="common_login__input-email"
+            name="name"
+            data-testid="common_register__input-name"
             onChange={ handleChange }
           />
         </label>
-        <label htmlFor="common_login__input-password">
+        <label htmlFor="common_register__input-email">
+          Email
+          <input
+            type="text"
+            name="email"
+            data-testid="common_register__input-email"
+            onChange={ handleChange }
+          />
+        </label>
+        <label htmlFor="common_register__input-password">
           Senha
           <input
             type="text"
             name="password"
             onChange={ handleChange }
-            data-testid="common_login__input-password"
+            data-testid="common_register__input-password"
           />
         </label>
         <button
           type="button"
-          data-testid="common_login__button-login"
+          data-testid="common_register__button-register"
           disabled={ !validateForm() }
           onClick={ login }
         >
-          LOGIN
+          CADASTRO
         </button>
-        <button
-          type="button"
-          data-testid="common_login__button-register"
-          onClick={ () => history.push('register') }
-        >
-          Ainda não tenho conta
-        </button>
+        {showError && (
+          <p data-testid="common_register__element-invalid_register">error message</p>
+        )}
       </form>
-      {showError && (
-        <p data-testid="common_login__element-invalid-email">error message</p>
-      )}
     </div>
   );
 }
 
-export default Login;
+export default Register;

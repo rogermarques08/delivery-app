@@ -3,6 +3,7 @@ import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import './App.css';
 import CustomerProducts from './pages/CustomerProducts';
 import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   const history = useHistory();
@@ -16,6 +17,7 @@ function App() {
     <Switch>
       <Route path="/login" component={ Login } />
       <Route path="/customer/products" component={ CustomerProducts } />
+      <Route path="/register" component={ Register } />
     </Switch>
   );
 }
