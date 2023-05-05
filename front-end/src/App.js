@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import './App.css';
+import CustomerProducts from './pages/CustomerProducts';
 import Login from './pages/Login';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   return (
     <Switch>
       <Route path="/login" component={ Login } />
+      <Route path="/customer/products" component={ CustomerProducts } />
     </Switch>
   );
 }

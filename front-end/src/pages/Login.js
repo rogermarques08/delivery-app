@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import getData from '../utils/getData';
 
 function Login() {
@@ -7,6 +8,8 @@ function Login() {
     password: '',
   });
   const [showError, setShowError] = useState(false);
+
+  const history = useHistory();
 
   const handleChange = ({ target: { value, name } }) => {
     setForm({ ...form, [name]: value });
@@ -24,8 +27,10 @@ function Login() {
 
   const login = async () => {
     const data = await getData('POST', form);
-    console.log(data);
-    if (data.message) setShowError(true);
+
+    if (data.message) return setShowError(true);
+
+    history.push('customer/products');
   };
 
   return (
