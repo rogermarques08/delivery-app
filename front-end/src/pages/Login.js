@@ -26,7 +26,7 @@ function Login() {
   };
 
   const login = async () => {
-    const data = await getData('POST', form);
+    const data = await getData('POST', form, '/login');
 
     if (data.message) return setShowError(true);
 

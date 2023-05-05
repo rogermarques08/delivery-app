@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import getData from '../utils/getData';
 
 function Register() {
   const [form, setForm] = useState({
@@ -6,6 +8,8 @@ function Register() {
     email: '',
     password: '',
   });
+
+  const history = useHistory();
 
   const handleChange = ({ target: { value, name } }) => {
     setForm({ ...form, [name]: value });
@@ -21,6 +25,14 @@ function Register() {
     const isNameValid = form.name.length >= minNameLength;
 
     return isEmailValid && isPasswordValid && isNameValid;
+  };
+
+  const login = async () => {
+    const data = await getData('POST', form, '/register');
+
+    if (data.message) return setShowError(true);
+
+    history.push('customer/products');
   };
 
   return (
@@ -58,6 +70,7 @@ function Register() {
           type="button"
           data-testid="common_register__button-register"
           disabled={ !validateForm() }
+          onClick={ login }
         >
           CADASTRO
         </button>
