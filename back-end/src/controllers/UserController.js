@@ -29,17 +29,16 @@ const createNewUser = async (req, res) => {
   if (hasEmail) {
     return res.status(409).json({ message: 'Conflict' });
   }
-  // const newUser = 
-  await UserService.createNewUser({ 
+  const newUser = await UserService.createNewUser({ 
     name, 
     email, 
     password: md5(password),
     role,
    });
 
-  // const payload = createToken({ name, email, password, role, id: newUser.id });
-  // console.log(payload);
-  return res.status(201).json({ message: 'Created' });
+  const payload = createToken({ name, email, password, role, id: newUser.id });
+  
+  return res.status(201).json({ token: payload });
 } catch (e) {
   console.log(e);
   return res.status(500).json({ message: 'internal error', error: e.message });
