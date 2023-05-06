@@ -1,8 +1,9 @@
+const customerService = require('../services/CustomerService');
+
 const getProductsLogged = async (_req, res) => {    
-  const products = [];
+  const products = await customerService.getProductsLogged();
   
-  // return res.status(200).json(products);
-  return res.status(200).json({ message: "Products!!!" });
+  return res.status(200).json(products);
 };
 
 module.exports = { getProductsLogged };
