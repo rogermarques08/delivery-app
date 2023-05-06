@@ -3,8 +3,8 @@ module.exports = (sequelize, DataTypes) => {
 'Sale', 
 {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    userId: { type: DataTypes.INTEGER, foreign: true, allowNull: false },
-    sellerId: { type: DataTypes.INTEGER, foreign: true, allowNull: false },
+    userId: { type: DataTypes.INTEGER, references: { model: 'UsersModel', key: 'id' }, allowNull: false },
+    sellerId: { type: DataTypes.INTEGER, references: { model: 'UsersModel', key: 'id' } , allowNull: false },
     totalPrice: DataTypes.DECIMAL(9, 2),
     deliveryAddress: { type: DataTypes.STRING, allowNull: false },
     deliveryNumber: { type: DataTypes.STRING, allowNull: false },
