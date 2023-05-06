@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 // eslint-disable-next-line camelcase
-const secret = 'jwt_secret';
+const secret = 'secret_key';
 
 const JWT_CONFIG = {
   algorithm: 'HS256',
