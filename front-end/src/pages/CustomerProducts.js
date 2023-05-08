@@ -1,6 +1,10 @@
+import NavBar from '../components/NavBar';
+
 function CustomerProducts() {
   return (
-    <h1>Produtos</h1>
+    <header>
+      <NavBar />
+    </header>
   );
 }
 
