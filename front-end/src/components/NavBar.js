@@ -1,4 +1,23 @@
+import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import getLocalStorage from '../utils/getLocalStorage';
+
 function NavBar() {
+  const [userName, setUserName] = useState('');
+
+  const history = useHistory();
+
+  const logOut = () => {
+    localStorage.removeItem('user');
+
+    history.push('/login');
+  };
+
+  useEffect(() => {
+    const { name } = getLocalStorage('user');
+    setUserName(name);
+  }, []);
+
   return (
     <nav>
       <button
@@ -17,13 +36,14 @@ function NavBar() {
         type="button"
         data-testid="customer_products__element-navbar-user-full-name"
       >
-        Nome do usuário
+        {userName}
       </button>
       <button
         type="button"
         data-testid="customer_products__element-navbar-link-logout"
+        onClick={ logOut }
       >
-        Sair
+        LogOut
       </button>
     </nav>
   );
