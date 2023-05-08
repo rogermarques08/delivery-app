@@ -7,5 +7,4 @@ const router = Router();
 router.get('/products', isLogged, getProductsLogged);
 router.get('/checkout', isLogged);
 
-
 module.exports = router;
