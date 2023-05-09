@@ -1,10 +1,10 @@
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 const sinon = require('sinon')
-const app = require('../api/app')
-const { User } = require('../database/models');
-const { zebirita } = require('./mocks/login.mocks');
-const { userRegisterConflict, userRegister } = require('./mocks/register.mock');
+const app = require('../../api/app')
+const { User } = require('../../database/models');
+const { zebirita } = require('../mocks/login.mocks');
+const { userRegisterConflict, userRegister } = require('../mocks/register.mock');
 
 
 const { expect } = chai
