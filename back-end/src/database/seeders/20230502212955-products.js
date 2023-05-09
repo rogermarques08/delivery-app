@@ -1,8 +1,7 @@
-'use strict';
-
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('products',
+  async up(queryInterface, Sequelize) {
+    await queryInterface.bulkInsert(
+'products',
     [
       {
         id: 1,
@@ -68,12 +67,13 @@ module.exports = {
         id: 11,
         name: 'Stella Artois 275ml',
         price: '3.49',
-        url_image: 'http://localhost:3001/images/skol_beats_senses_269ml.jpg',
+        url_image: 'http://localhost:3001/images/stella_artois_275ml.jpg',
       },
-    ])
+    ],
+);
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     await queryInterface.bulkDelete('products', null, {});
-  }
+  },
 };
