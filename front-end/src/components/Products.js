@@ -1,10 +1,13 @@
 import { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import DeliveryContext from '../context/DeliveryContext';
 
 function Products() {
   const { products } = useContext(DeliveryContext);
   const [quantities, setQuantities] = useState({});
   const [total, setTotal] = useState(0);
+
+  const history = useHistory();
 
   const handleQuantityChange = (productId, quantity) => {
     setQuantities((prevQuantities) => ({
@@ -87,6 +90,8 @@ function Products() {
       <button
         type="button"
         data-testid="customer_products__button-cart"
+        onClick={ () => history.push('/customer/checkout') }
+        disabled={ total === 0.00 }
       >
         Ver Carriho
         {' '}
