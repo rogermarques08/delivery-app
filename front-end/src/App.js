@@ -4,6 +4,7 @@ import './App.css';
 import CustomerProducts from './pages/CustomerProducts';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Checkout from './pages/Checkout';
 
 function App() {
   const history = useHistory();
@@ -18,6 +19,7 @@ function App() {
       <Route path="/login" component={ Login } />
       <Route path="/customer/products" component={ CustomerProducts } />
       <Route path="/register" component={ Register } />
+      <Route path="/customer/checkout" component={ Checkout } />
     </Switch>
   );
 }
