@@ -12,6 +12,10 @@ function CustomerProducts() {
     const { token } = getLocalStorage('user');
 
     getProducts('GET', '/customer/products', token).then((data) => {
+      data.forEach((item) => {
+        item.quantity = 0;
+        // item.price = item.price.replace('.', ',');
+      });
       setProducts(data);
     });
   }, [setProducts]);
