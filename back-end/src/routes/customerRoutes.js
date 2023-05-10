@@ -10,4 +10,6 @@ router.get('/products', isLogged, getProductsLogged);
 router.post('/checkout', isLogged, SalesController.createSale);
 router.post('/orders', SalesProductsController.create);
 
+router.get('/sellers', SalesController.getAllIdsSellers);
+
 module.exports = router;

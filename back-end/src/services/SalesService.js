@@ -6,10 +6,15 @@ const { User } = require('../database/models');
 //   return findUser;
 // };
 
-// const findByIdSeller = async (sellerId) => {
-//   const findSeller = await User.findByPk({ where: sellerId });
-//   return findSeller;
-// };
+const getAllIdsSellers = async () => {
+  const findSeller = await User.findAll({
+    attributes: {
+      exclude: ['role', 'email', 'password'],
+    },
+    where: { role: 'seller' },
+  });
+  return findSeller;
+};
 
 const createSale = async (saleBody) => {
 await User.findByPk(saleBody.userId);
@@ -25,6 +30,6 @@ await User.findByPk(saleBody.sellerId);
 
 module.exports = {
   // findByIdUser,
-  // findByIdSeller,
   createSale,
+  getAllIdsSellers,
 };
