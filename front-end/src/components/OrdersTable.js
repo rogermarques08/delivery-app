@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import DeliveryContext from '../context/DeliveryContext';
 
 function OrdersTable() {
-  const { quantities, products } = useContext(DeliveryContext);
+  const { quantities, products, setTotal } = useContext(DeliveryContext);
   const [productsOnCart, setProductsOnCart] = useState([]);
 
   useEffect(() => {
@@ -11,6 +11,18 @@ function OrdersTable() {
 
     setProductsOnCart(cart);
   }, [setProductsOnCart, products, quantities]);
+
+  const removeItem = (id) => {
+    const newCart = productsOnCart.filter((product) => product.id !== id);
+
+    const newTotal = newCart.reduce((acc, curr) => {
+      const quantity = quantities[curr.id] || 0;
+      return acc + (curr.price * quantity);
+    }, 0);
+
+    setTotal(newTotal);
+    setProductsOnCart(newCart);
+  };
 
   return (
     <table>
@@ -55,7 +67,7 @@ function OrdersTable() {
             <td
               data-testid={ `customer_checkout__element-order-table-remove-${index}` }
             >
-              <button type="button">
+              <button type="button" onClick={ () => removeItem(product.id) }>
                 Remover
               </button>
             </td>

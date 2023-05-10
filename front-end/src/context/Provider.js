@@ -54,11 +54,13 @@ function Provider({ children }) {
     quantities,
     handleQuantityChange,
     increment,
+    setTotal,
     total,
 
   }), [
     products,
     setProducts,
+    setTotal,
     quantities,
     total,
   ]);
