@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import getData from '../utils/getData';
+import setLogin from '../utils/loginLocalStorage';
 
 function Register() {
   const [form, setForm] = useState({
@@ -30,9 +31,11 @@ function Register() {
 
   const login = async () => {
     const data = await getData('POST', form, '/register');
+    const { name, email, token } = data;
 
     if (data.message) return setShowError(true);
 
+    setLogin({ name, email, role: 'customer', token });
     history.push('customer/products');
   };
 

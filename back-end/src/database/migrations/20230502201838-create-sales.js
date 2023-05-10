@@ -31,7 +31,7 @@ module.exports = {
         onUpdate: 'CASCADE',
       },
       totalPrice: {
-        field: 'total_id',
+        field: 'total_price',
         allowNull: true,
         type: Sequelize.DECIMAL(9, 2),
       },

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import getData from '../utils/getData';
+import setLogin from '../utils/loginLocalStorage';
 
 function Login() {
   const [form, setForm] = useState({
@@ -27,9 +28,11 @@ function Login() {
 
   const login = async () => {
     const data = await getData('POST', form, '/login');
+    const { name, email, role, token } = data;
 
     if (data.message) return setShowError(true);
 
+    setLogin({ name, email, role, token });
     history.push('customer/products');
   };
 
