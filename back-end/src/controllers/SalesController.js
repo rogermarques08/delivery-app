@@ -21,10 +21,9 @@ const createSale = async (req, res) => {
 
       const newProductsSales = products.map(async (product) => 
        SalesProductsService.create(product, newSale.id));
-
-       const productsSales = await Promise.all(newProductsSales);
+        await Promise.all(newProductsSales);
       
-        return res.status(201).json({ ...newSale.dataValues, productsSales });
+        return res.status(201).json({ id: newSale.dataValues.id });
     } catch (e) {
       console.log(e);
       return res.status(500).json({ message: 'internal error', error: e.message });
