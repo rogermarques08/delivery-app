@@ -11,5 +11,6 @@ router.post('/checkout', isLogged, SalesController.createSale);
 router.post('/orders', SalesProductsController.create);
 
 router.get('/sellers', SalesController.getAllIdsSellers);
+router.get('/orders/:id', SalesController.saleById);
 
 module.exports = router;

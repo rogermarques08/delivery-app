@@ -1,5 +1,6 @@
 const { Sale } = require('../database/models');
 const { User } = require('../database/models');
+const { Product } = require('../database/models');
 
 // const findByIdUser = async (userId) => {
 //   const findUser = await User.findByPk({ where: userId });
@@ -28,8 +29,19 @@ await User.findByPk(saleBody.sellerId);
   return newSale;
 };
 
+const saleById = async (id) => {
+  const byId = await Sale.findOne({
+    where: { id },
+     include: [{ model: User, as: 'seller' },
+     { model: Product, as: 'products', through: { attributes: ['quantity'] } },
+   ],
+ });
+  return byId;
+};
+
 module.exports = {
   // findByIdUser,
   createSale,
   getAllIdsSellers,
+  saleById,
 };
