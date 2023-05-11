@@ -16,4 +16,7 @@ router.get('/orders/:id', SalesController.saleById);
 // Rota da tela de todos os pedidos realizados pelo usuário
 router.get('/ordered/:id', SalesController.orderedByUserId);
 
+// Rota para alteração do status
+router.put('/status/:id', SalesController.updateStatus);
+
 module.exports = router;
