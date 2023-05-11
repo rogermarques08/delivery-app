@@ -39,11 +39,23 @@ const saleById = async (req, res) => {
   try {
     const { id } = req.params;
     const byId = await SalesService.saleById(id);
-    if (!byId) return res.status(404).json({ message: 'Post does not exist' });
+    if (!byId) return res.status(404).json({ message: 'Sale does not exist' });
     return res.status(200).json(byId);
   } catch (e) {
       console.log(e);
       return res.status(500).json({ message: 'internal error', error: e.message });
+    }
+};
+
+const orderedByUserId = async (req, res) => {
+  try {
+     const { id } = req.params;
+    const byUserId = await SalesService.orderedByUserId(id);
+    // if (!byUserId) return res.status(404).json({ message: 'User does not exist' });
+    return res.status(200).json(byUserId);
+  } catch (e) {
+      console.log(e);
+      return res.status(500).json({ message: 'internal server error', error: e.message });
     }
 };
 
@@ -52,4 +64,5 @@ module.exports = {
   createSale,
   getAllIdsSellers,
   saleById,
+  orderedByUserId,
 };
