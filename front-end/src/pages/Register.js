@@ -31,11 +31,10 @@ function Register() {
 
   const login = async () => {
     const data = await getData('POST', form, '/register');
-    const { name, email, token } = data;
 
     if (data.message) return setShowError(true);
 
-    setLogin({ name, email, role: 'customer', token });
+    setLogin(data);
     history.push('customer/products');
   };
 

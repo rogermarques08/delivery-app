@@ -22,10 +22,5 @@ User.associate = (models) => {
   User.hasMany(models.Sale, { foreignKey: 'sellerId', as: 'seller' });
 };
 
-Sale.associate = (models) => {
-  Sale.belongsTo(models.User, { foreignKey: 'userId', as: 'user' });
-  Sale.belongsTo(models.User, { foreignKey: 'sellerId', as: 'seller' });
-};
-
   return User;
 };

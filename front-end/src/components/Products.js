@@ -1,50 +1,17 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import DeliveryContext from '../context/DeliveryContext';
 
 function Products() {
   const { products } = useContext(DeliveryContext);
-  const [quantities, setQuantities] = useState({});
-  const [total, setTotal] = useState(0);
+  const {
+    increment,
+    total,
+    handleQuantityChange,
+    quantities,
+  } = useContext(DeliveryContext);
 
   const history = useHistory();
-
-  const handleQuantityChange = (productId, quantity) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [productId]: quantity,
-    }));
-  };
-
-  const increment = (productId, oparation) => {
-    if (oparation === '+') {
-      setQuantities((prevQuantities) => ({
-        ...prevQuantities,
-        [productId]: (Number(prevQuantities[productId]) || 0) + 1,
-      }));
-    } else {
-      setQuantities((prevQuantities) => {
-        const quantity = prevQuantities[productId] || 0;
-        if (quantity > 0) {
-          return {
-            ...prevQuantities,
-            [productId]: quantity - 1,
-          };
-        }
-
-        return prevQuantities;
-      });
-    }
-  };
-
-  useEffect(() => {
-    const totalCart = products.reduce((acc, curr) => {
-      const quantity = quantities[curr.id] || 0;
-      return acc + (curr.price * quantity);
-    }, 0);
-
-    setTotal(totalCart);
-  }, [quantities, products]);
 
   return (
     <div>
@@ -58,6 +25,7 @@ function Products() {
           <img
             src={ product.urlImage }
             alt={ product.name }
+            style={ { width: '100px' } }
             data-testid={ `customer_products__img-card-bg-image-${product.id}` }
           />
           <p
