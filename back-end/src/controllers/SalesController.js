@@ -59,10 +59,24 @@ const orderedByUserId = async (req, res) => {
     }
 };
 
+const updateStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    const update = await SalesService.updateStatus(id, status);
+    return res.status(201).json({ update, message: 'Successfully changed status' });
+  } catch (e) {
+      console.log(e);
+      return res.status(500).json({ message: 'internal server error', error: e.message });
+    }
+};
+
 module.exports = {
   findById,
   createSale,
   getAllIdsSellers,
   saleById,
   orderedByUserId,
+  updateStatus,
 };

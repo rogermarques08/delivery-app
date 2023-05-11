@@ -49,10 +49,19 @@ const orderedByUserId = async (userId) => {
   return byUserId;
 };
 
+const updateStatus = async (id, status) => {
+ const byId = await Sale.findByPk(id);
+ if (!byId) throw new Error('Sale not found');
+
+ const update = await Sale.update({ status }, { where: { id } });
+ return update;
+};
+
 module.exports = {
   // findByIdUser,
   createSale,
   getAllIdsSellers,
   saleById,
   orderedByUserId,
+  updateStatus,
 };
