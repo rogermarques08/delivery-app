@@ -13,4 +13,7 @@ router.post('/orders', SalesProductsController.create);
 router.get('/sellers', SalesController.getAllIdsSellers);
 router.get('/orders/:id', SalesController.saleById);
 
+// Rota da tela de todos os pedidos realizados pelo usuário
+router.get('/ordered/:id', SalesController.orderedByUserId);
+
 module.exports = router;
