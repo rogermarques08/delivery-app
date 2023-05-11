@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import getData from '../utils/getData';
+import getLocalStorage from '../utils/getLocalStorage';
 import setLogin from '../utils/loginLocalStorage';
 
 function Login() {
@@ -34,6 +35,12 @@ function Login() {
     setLogin(data);
     history.push('customer/products');
   };
+
+  useEffect(() => {
+    const user = getLocalStorage('user');
+
+    if (user) { history.push('customer/products'); }
+  }, [history]);
 
   return (
     <div>
