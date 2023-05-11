@@ -11,7 +11,8 @@ const createSale = async (req, res) => {
   const { userId, 
     sellerId, totalPrice, deliveryAddress, deliveryNumber, products } = req.body;
     try {
-      const newSale = await SalesService.createSale({ userId,
+      const newSale = await SalesService.createSale({ 
+        userId,
         sellerId,
         totalPrice,
         deliveryAddress, 

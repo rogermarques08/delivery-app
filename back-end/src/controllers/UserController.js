@@ -22,7 +22,7 @@ const login = async (req, res) => {
     const { id, password: _, ...dataUsers } = user.dataValues;
 
     const token = createToken({ user });
-    return res.status(200).json({ ...dataUsers, token });
+    return res.status(200).json({ ...dataUsers, id, token });
   } catch (e) {
     console.log(e);
     return res.status(500).json({ message: 'internal error', error: e.message });
@@ -46,7 +46,7 @@ const createNewUser = async (req, res) => {
 
   const token = createToken({ name, email, password, role, id: newUser.id });
   
-  return res.status(201).json({ name, email, password, token });
+  return res.status(201).json({ id: newUser.id, name, email, password, token });
 } catch (e) {
   console.log(e);
   return res.status(500).json({ message: 'internal error', error: e.message });

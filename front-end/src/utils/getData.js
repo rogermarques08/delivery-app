@@ -1,4 +1,4 @@
-const getData = async (method, body, endpoint) => {
+const getData = async (method, body, endpoint, token = 'no-token') => {
   const response = await fetch(`http://localhost:3001${endpoint}`, {
     method: `${method}`, // *GET, POST, PUT, DELETE, etc.
     mode: 'cors',
@@ -6,6 +6,7 @@ const getData = async (method, body, endpoint) => {
     referrerPolicy: 'no-referrer',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: token,
     },
     body: JSON.stringify(body), // body data type must match "Content-Type" header
   });

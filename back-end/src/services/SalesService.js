@@ -24,7 +24,7 @@ await User.findByPk(saleBody.sellerId);
   const newSale = await Sale.create({
     ...saleBody,
     saleDate: new Date(), 
-    status: 'pendente',
+    status: 'Pendente',
   });
   return newSale;
 };

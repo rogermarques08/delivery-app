@@ -28,11 +28,10 @@ function Login() {
 
   const login = async () => {
     const data = await getData('POST', form, '/login');
-    const { name, email, role, token } = data;
 
     if (data.message) return setShowError(true);
 
-    setLogin({ name, email, role, token });
+    setLogin(data);
     history.push('customer/products');
   };
 

@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import './App.css';
+import Checkout from './pages/Checkout';
 import CustomerProducts from './pages/CustomerProducts';
 import Login from './pages/Login';
+import ProductsDetails from './pages/ProductsDetails';
 import Register from './pages/Register';
-import Checkout from './pages/Checkout';
 
 function App() {
   const history = useHistory();
@@ -20,6 +21,7 @@ function App() {
       <Route path="/customer/products" component={ CustomerProducts } />
       <Route path="/register" component={ Register } />
       <Route path="/customer/checkout" component={ Checkout } />
+      <Route path="/customer/orders/:id" component={ ProductsDetails } />
     </Switch>
   );
 }
