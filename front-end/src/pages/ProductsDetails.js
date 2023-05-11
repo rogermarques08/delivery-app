@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import NavBar from '../components/NavBar';
+import formatDate from '../utils/formatDate';
 import { getProducts } from '../utils/getData';
 
 function ProductsDetails() {
@@ -14,19 +15,6 @@ function ProductsDetails() {
       setSaleDetail(data);
     });
   }, [id]);
-
-  const formatDate = (timeStamp) => {
-    const date = new Date(timeStamp);
-    const sliceNumber = -2;
-
-    const day = (`0${date.getDate()}`).slice(sliceNumber);
-    const month = (`0${date.getMonth() + 1}`).slice(sliceNumber);
-    const year = date.getFullYear();
-
-    const dataFormatada = `${day}/${month}/${year}`;
-
-    return dataFormatada;
-  };
 
   return (
     <>

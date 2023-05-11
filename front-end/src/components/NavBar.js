@@ -23,12 +23,14 @@ function NavBar() {
       <button
         type="button"
         data-testid="customer_products__element-navbar-link-products"
+        onClick={ () => history.push('/customer/products') }
       >
         Produtos
       </button>
       <button
         type="button"
         data-testid="customer_products__element-navbar-link-orders"
+        onClick={ () => history.push('/customer/orders') }
       >
         Meus pedidos
       </button>
