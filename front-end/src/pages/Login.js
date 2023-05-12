@@ -33,6 +33,8 @@ function Login() {
     if (data.message) return setShowError(true);
 
     setLogin(data);
+
+    if (data.role === 'seller') return history.push('seller/orders');
     history.push('customer/products');
   };
 

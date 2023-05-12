@@ -24,6 +24,7 @@ function App() {
       <Route path="/customer/checkout" component={ Checkout } />
       <Route path="/customer/orders/:id" component={ ProductsDetails } />
       <Route path="/customer/orders" component={ Orders } />
+      <Route path="/seller/orders" component={ Orders } />
     </Switch>
   );
 }
