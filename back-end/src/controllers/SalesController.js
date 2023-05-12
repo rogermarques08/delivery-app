@@ -64,8 +64,8 @@ const updateStatus = async (req, res) => {
     const { id } = req.params;
     const { status } = req.body;
 
-    const update = await SalesService.updateStatus(id, status);
-    return res.status(201).json({ update, message: 'Successfully changed status' });
+    await SalesService.updateStatus(id, status);
+    return res.status(201).json({ status });
   } catch (e) {
       console.log(e);
       return res.status(500).json({ message: 'internal server error', error: e.message });

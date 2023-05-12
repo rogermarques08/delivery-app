@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import NavBar from '../components/NavBar';
-import { getProducts } from '../utils/getData';
+import getData, { getProducts } from '../utils/getData';
 import getLocalStorage from '../utils/getLocalStorage';
 
 function ProductsDetails() {
   const [saleDetail, setSaleDetail] = useState({});
-  // const cd = 'customer_order_details';
+  const [saleStatus, setSaleStatus] = useState('');
 
   const { role } = getLocalStorage('user');
 
@@ -15,6 +15,7 @@ function ProductsDetails() {
   useEffect(() => {
     getProducts('GET', `/customer/orders/${id}`).then((data) => {
       setSaleDetail(data);
+      setSaleStatus(data.status);
     });
   }, [id]);
 
@@ -29,6 +30,13 @@ function ProductsDetails() {
     const dataFormatada = `${day}/${month}/${year}`;
 
     return dataFormatada;
+  };
+
+  const handleStatus = (saleId, status) => {
+    getData('PUT', { status }, `/customer/status/${saleId}`).then((data) => {
+      // console.log(data);
+      setSaleStatus(data.status);
+    });
   };
 
   return (
@@ -63,13 +71,14 @@ function ProductsDetails() {
             `${role}_order_details__element-order-details-label-delivery-status`
           }
         >
-          {saleDetail.status}
+          {saleStatus}
         </p>
         { role === 'customer' && (
           <button
             type="button"
             data-testid="customer_order_details__button-delivery-check"
-            disabled
+            disabled={ saleStatus !== 'Em Trânsito' }
+            onClick={ () => handleStatus(id, 'Entregue') }
           >
             Marcar Como Entregue
           </button>)}
@@ -79,14 +88,16 @@ function ProductsDetails() {
             <button
               type="button"
               data-testid="seller_order_details__button-preparing-check"
-              // disabled
+              disabled={ saleStatus !== 'Pendente' }
+              onClick={ () => handleStatus(id, 'Preparando') }
             >
               PREPARAR PEDIDO
             </button>
             <button
               type="button"
               data-testid="seller_order_details__button-dispatch-check"
-              disabled
+              disabled={ saleStatus !== 'Preparando' }
+              onClick={ () => handleStatus(id, 'Em Trânsito') }
             >
               SAIU PARA ENTREGA
 
