@@ -5,6 +5,7 @@ const UserRoutes = require('../routes/UserRoutes');
 const routerRegister = require('../routes/RegisterRoutes');
 const customerRoutes = require('../routes/customerRoutes');
 const SellerRoutes = require('../routes/SellerRoutes');
+const AdminRouter = require('../routes/AdminRoutes');
 // const routerNewSales = require('../routes/SalesCheckoutRoutes');
 
 const app = express();
@@ -19,5 +20,6 @@ app.use('/login', UserRoutes);
 app.use('/register', routerRegister);
 app.use('/customer', customerRoutes);
 app.use('/seller', SellerRoutes);
+app.use('/admin', AdminRouter);
 // app.use('/checkout', routerNewSales);
 module.exports = app;
