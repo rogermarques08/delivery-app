@@ -2,10 +2,13 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import { getProducts } from '../utils/getData';
+import getLocalStorage from '../utils/getLocalStorage';
 
 function ProductsDetails() {
   const [saleDetail, setSaleDetail] = useState({});
-  const cd = 'customer_order_details';
+  // const cd = 'customer_order_details';
+
+  const { role } = getLocalStorage('user');
 
   const { id } = useParams();
 
@@ -34,37 +37,62 @@ function ProductsDetails() {
       <h1>Detalhe do Pedido</h1>
       <div>
         <p
-          data-testid="customer_order_details__element-order-details-label-order-id"
+          data-testid={ `${role}_order_details__element-order-details-label-order-id` }
         >
           PEDIDO
           {' '}
           000
           {saleDetail.id}
         </p>
+        { role === 'customer' && (
+          <p
+            data-testid="customer_order_details__element-order-details-label-seller-name"
+          >
+            P.Vend:
+            {' '}
+            {saleDetail?.seller?.name}
+          </p>
+        ) }
         <p
-          data-testid="customer_order_details__element-order-details-label-seller-name"
-        >
-          P.Vend:
-          {' '}
-          {saleDetail?.seller?.name}
-        </p>
-        <p
-          data-testid="customer_order_details__element-order-details-label-order-date"
+          data-testid={ `${role}_order_details__element-order-details-label-order-date"` }
         >
           {formatDate(saleDetail.saleDate)}
         </p>
         <p
-          data-testid={ `${cd}__element-order-details-label-delivery-status` }
+          data-testid={
+            `${role}_order_details__element-order-details-label-delivery-status`
+          }
         >
           {saleDetail.status}
         </p>
-        <button
-          type="button"
-          data-testid="customer_order_details__button-delivery-check"
-          disabled
-        >
-          Marcar Como Entregue
-        </button>
+        { role === 'customer' && (
+          <button
+            type="button"
+            data-testid="customer_order_details__button-delivery-check"
+            disabled
+          >
+            Marcar Como Entregue
+          </button>)}
+
+        { role === 'seller' && (
+          <>
+            <button
+              type="button"
+              data-testid="seller_order_details__button-preparing-check"
+              // disabled
+            >
+              PREPARAR PEDIDO
+            </button>
+            <button
+              type="button"
+              data-testid="seller_order_details__button-dispatch-check"
+              // disabled
+            >
+              SAIU PARA ENTREGA
+
+            </button>
+          </>
+        ) }
       </div>
       <table>
         <thead>
@@ -81,31 +109,31 @@ function ProductsDetails() {
             <tr key={ product.id }>
               <td
                 data-testid={
-                  `customer_order_details__element-order-table-item-number-${index}`
+                  `${role}_order_details__element-order-table-item-number-${index}`
                 }
               >
                 {index + 1}
               </td>
               <td
-                data-testid={ `customer_order_details__element-order-table-name
+                data-testid={ `${role}_order_details__element-order-table-name
               -${index}` }
               >
                 {product.name}
               </td>
               <td
-                data-testid={ `customer_order_details__element-order-table-quantity
+                data-testid={ `${role}_order_details__element-order-table-quantity
                 -${index}` }
               >
                 {product.SaleProduct.quantity}
               </td>
               <td
-                data-testid={ `customer_order_details__element-order-table-unit-price
+                data-testid={ `${role}_order_details__element-order-table-unit-price
                 -${index}` }
               >
                 {product.price.replace('.', ',')}
               </td>
               <td
-                data-testid={ `customer_order_details__element-order-table-sub-total
+                data-testid={ `${role}_order_details__element-order-table-sub-total
                 -${index}` }
               >
                 {(product.price * product.SaleProduct.quantity)
@@ -115,7 +143,7 @@ function ProductsDetails() {
           ))}
         </tbody>
       </table>
-      <p data-testid="customer_order_details__element-order-total-price">
+      <p data-testid={ `${role}_order_details__element-order-total-price` }>
         Total:
         {' '}
         R$
