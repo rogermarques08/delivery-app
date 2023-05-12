@@ -10,15 +10,15 @@ function OrdersCards() {
   const { id, role } = getLocalStorage('user');
 
   useEffect(() => {
-    getProducts('GET', `/customer/ordered/${id}`).then((data) => {
+    getProducts('GET', `/${role}/ordered/${id}`).then((data) => {
       setOrders(data);
     });
-  }, [id]);
+  }, [id, role]);
 
   return (
     <div>
       {orders?.map((order) => (
-        <Link to={ `/customer/orders/${order.id}` } key={ order.id }>
+        <Link to={ `/${role}/orders/${order.id}` } key={ order.id }>
           <div>
             <p data-testid={ `${role}_orders__element-order-id-${order.id}` }>
               Pedido: 000
@@ -38,6 +38,14 @@ function OrdersCards() {
               data-testid={ `${role}_orders__element-card-price-${order.id}` }
             >
               {order.totalPrice.replace('.', ',')}
+            </p>
+            <p
+              data-testid={ `seller_orders__element-card-address-${order.id}` }
+            >
+              {order.deliveryAddress}
+              ,
+              {' '}
+              {order.deliveryNumber}
             </p>
           </div>
         </Link>
