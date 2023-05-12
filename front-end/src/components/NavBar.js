@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import getLocalStorage from '../utils/getLocalStorage';
 
 function NavBar() {
-  const [userName, setUserName] = useState('');
+  const [user, setUser] = useState({ name: '', role: '' });
 
   const history = useHistory();
 
@@ -14,31 +14,33 @@ function NavBar() {
   };
 
   useEffect(() => {
-    const { name } = getLocalStorage('user');
-    setUserName(name);
+    const { name, role } = getLocalStorage('user');
+    setUser({ name, role });
   }, []);
 
   return (
     <nav>
-      <button
-        type="button"
-        data-testid="customer_products__element-navbar-link-products"
-        onClick={ () => history.push('/customer/products') }
-      >
-        Produtos
-      </button>
+      {user.role === 'customer' && (
+        <button
+          type="button"
+          data-testid="customer_products__element-navbar-link-products"
+          onClick={ () => history.push('/customer/products') }
+        >
+          Produtos
+        </button>
+      )}
       <button
         type="button"
         data-testid="customer_products__element-navbar-link-orders"
-        onClick={ () => history.push('/customer/orders') }
+        onClick={ () => history.push(`/${user.role}/orders`) }
       >
-        Meus pedidos
+        {user.role === 'customer' ? ' Meus pedidos' : 'Pedidos' }
       </button>
       <button
         type="button"
         data-testid="customer_products__element-navbar-user-full-name"
       >
-        {userName}
+        {user.name}
       </button>
       <button
         type="button"

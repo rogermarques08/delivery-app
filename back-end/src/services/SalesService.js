@@ -57,6 +57,13 @@ const updateStatus = async (id, status) => {
  return update;
 };
 
+const getAllSalesSeller = async (sellerId) => {
+  const sallesSeller = await Sale.findAll({
+    where: { sellerId },
+  });
+  return sallesSeller; 
+};
+
 module.exports = {
   // findByIdUser,
   createSale,
@@ -64,4 +71,5 @@ module.exports = {
   saleById,
   orderedByUserId,
   updateStatus,
+  getAllSalesSeller,
 };
