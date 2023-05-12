@@ -44,7 +44,7 @@ const createNewUser = async (req, res) => {
 
   const token = createToken({ name, email, password, role, id: newUser.id });
   
-  return res.status(201).json({ id: newUser.id, name, email, password, token });
+  return res.status(201).json({ id: newUser.id, name, email, password, token, role: newUser.role });
 } catch (e) {
   console.log(e);
   return res.status(500).json({ message: 'internal error', error: e.message });
