@@ -4,6 +4,7 @@ const path = require('path');
 const UserRoutes = require('../routes/UserRoutes');
 const routerRegister = require('../routes/RegisterRoutes');
 const customerRoutes = require('../routes/customerRoutes');
+const SellerRoutes = require('../routes/SellerRoutes');
 // const routerNewSales = require('../routes/SalesCheckoutRoutes');
 
 const app = express();
@@ -17,5 +18,6 @@ app.use('/images', express.static(path.join(__dirname, '..', 'public')));
 app.use('/login', UserRoutes);
 app.use('/register', routerRegister);
 app.use('/customer', customerRoutes);
+app.use('/seller', SellerRoutes);
 // app.use('/checkout', routerNewSales);
 module.exports = app;
