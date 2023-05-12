@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     deliveryAddress: { type: DataTypes.STRING, allowNull: false },
     deliveryNumber: { type: DataTypes.STRING, allowNull: false },
     saleDate: { type: DataTypes.DATE, allowNull: false },
-    status: { type: DataTypes.ENUM('Pendente', 'Em Trânsito', 'Entregue'), allowNull: false },
+    status: { type: DataTypes.ENUM('Pendente','Preparando','Em Trânsito', 'Entregue'), allowNull: false },
   },
 {
     timestamps: true,
