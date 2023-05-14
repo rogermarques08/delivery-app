@@ -8,6 +8,12 @@ const adminRemove = async (id) => {
     return remove;
 };
 
+const getAllUsers = async () => {
+  const findAll = await User.findAll();
+  return findAll;
+};
+
 module.exports = {
   adminRemove,
+  getAllUsers,
 };
