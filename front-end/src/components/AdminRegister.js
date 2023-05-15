@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import getData from '../utils/getData';
+import getLocalStorage from '../utils/getLocalStorage';
 
 function AdminRegister() {
   const [form, setForm] = useState({
@@ -9,6 +10,8 @@ function AdminRegister() {
     role: 'seller',
   });
   const [showError, setShowError] = useState(false);
+
+  const { token } = getLocalStorage('user');
 
   const handleChange = ({ target: { value, name } }) => {
     setForm({ ...form, [name]: value });
@@ -27,7 +30,7 @@ function AdminRegister() {
   };
 
   const register = async () => {
-    const data = await getData('POST', form, '/register');
+    const data = await getData('POST', form, '/register', token);
 
     if (data.message) return setShowError(true);
   };
