@@ -4,8 +4,14 @@ import getLocalStorage from '../utils/getLocalStorage';
 
 function UsersTable() {
   const [users, setUsers] = useState([]);
-
   const { token } = getLocalStorage('user');
+
+  const removeUser = (id) => {
+    getProducts('DELETE', `/admin/${id}`, token);
+
+    // const filterUsers = users.filter((user) => user.id !== id);
+    // setUsers(filterUsers);
+  };
 
   useEffect(() => {
     getProducts('GET', '/admin', token).then((data) => {
@@ -59,6 +65,7 @@ function UsersTable() {
               <button
                 type="button"
                 data-testid={ `admin_manage__element-user-table-remove-${index}` }
+                onClick={ () => removeUser(user.id) }
               >
                 Excluir
               </button>
