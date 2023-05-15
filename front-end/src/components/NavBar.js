@@ -29,13 +29,24 @@ function NavBar() {
           Produtos
         </button>
       )}
-      <button
-        type="button"
-        data-testid="customer_products__element-navbar-link-orders"
-        onClick={ () => history.push(`/${user.role}/orders`) }
-      >
-        {user.role === 'customer' ? ' Meus pedidos' : 'Pedidos' }
-      </button>
+      {user.role !== 'administrator' && (
+        <button
+          type="button"
+          data-testid="customer_products__element-navbar-link-orders"
+          onClick={ () => history.push(`/${user.role}/orders`) }
+        >
+          {user.role === 'customer' ? ' Meus pedidos' : 'Pedidos' }
+        </button>
+      )}
+      {user.role === 'administrator' && (
+        <button
+          type="button"
+          data-testid="customer_products__element-navbar-link-orders"
+          onClick={ () => history.push('/admin/manage') }
+        >
+          Gerenciar Usuários
+        </button>
+      )}
       <button
         type="button"
         data-testid="customer_products__element-navbar-user-full-name"
