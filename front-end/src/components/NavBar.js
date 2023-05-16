@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import '../styles/NavBar.css';
 import getLocalStorage from '../utils/getLocalStorage';
 
 function NavBar() {
@@ -25,6 +26,7 @@ function NavBar() {
           type="button"
           data-testid="customer_products__element-navbar-link-products"
           onClick={ () => history.push('/customer/products') }
+          className="nav-item"
         >
           Produtos
         </button>
@@ -34,6 +36,7 @@ function NavBar() {
           type="button"
           data-testid="customer_products__element-navbar-link-orders"
           onClick={ () => history.push(`/${user.role}/orders`) }
+          className="nav-item"
         >
           {user.role === 'customer' ? ' Meus pedidos' : 'Pedidos' }
         </button>
@@ -43,6 +46,7 @@ function NavBar() {
           type="button"
           data-testid="customer_products__element-navbar-link-orders"
           onClick={ () => history.push('/admin/manage') }
+          className="nav-item"
         >
           Gerenciar Usuários
         </button>
@@ -50,6 +54,7 @@ function NavBar() {
       <button
         type="button"
         data-testid="customer_products__element-navbar-user-full-name"
+        className="nav-item"
       >
         {user.name}
       </button>
@@ -57,6 +62,7 @@ function NavBar() {
         type="button"
         data-testid="customer_products__element-navbar-link-logout"
         onClick={ logOut }
+        className="nav-item"
       >
         LogOut
       </button>

@@ -1,0 +1,14 @@
+nav {
+  background-color: #ffe100;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+
+.nav-item {
+  background-color: #ffe100;
+  border: none;
+  color: black;
+  font-weight: 500;
+}
