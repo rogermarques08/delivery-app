@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { User } = require('../database/models');
 
 const adminRemove = async (id) => {
@@ -9,7 +10,9 @@ const adminRemove = async (id) => {
 };
 
 const getAllUsers = async () => {
-  const findAll = await User.findAll();
+  const findAll = await User.findAll({
+    where: { role: { [Op.ne]: ['administrator'] } },
+  });
   return findAll;
 };
 
