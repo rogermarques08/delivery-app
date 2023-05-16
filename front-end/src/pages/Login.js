@@ -35,6 +35,7 @@ function Login() {
     setLogin(data);
 
     if (data.role === 'seller') return history.push('seller/orders');
+    if (data.role === 'administrator') return history.push('admin/manage');
     history.push('customer/products');
   };
 

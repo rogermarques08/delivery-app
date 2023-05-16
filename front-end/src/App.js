@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import './App.css';
+import Admin from './pages/Admin';
 import Checkout from './pages/Checkout';
 import CustomerProducts from './pages/CustomerProducts';
 import Login from './pages/Login';
@@ -26,6 +27,7 @@ function App() {
       <Route path="/seller/orders/:id" component={ ProductsDetails } />
       <Route path="/customer/orders" component={ Orders } />
       <Route path="/seller/orders" component={ Orders } />
+      <Route path="/admin/manage" component={ Admin } />
     </Switch>
   );
 }
