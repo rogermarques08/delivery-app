@@ -1,0 +1,30 @@
+.register-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.register-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+}
+
+.button-register {
+  background-color: #ffe100;
+  border: none;
+  border-radius: 5px;
+  color: #292929;
+  font-weight: 700;
+}
+
+
+.button-register:disabled {
+  background-color: grey;
+}
+

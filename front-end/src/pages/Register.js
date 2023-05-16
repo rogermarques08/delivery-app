@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import '../styles/RegisterStyle.css';
 import getData from '../utils/getData';
 import setLogin from '../utils/loginLocalStorage';
 
@@ -39,34 +40,38 @@ function Register() {
   };
 
   return (
-    <div>
-      <h2>Cadastro</h2>
-      <form>
+    <div className="register-container">
+      <h1>LOGO</h1>
+      <form className="register-form">
+        <h1>Cadastro</h1>
         <label htmlFor="common_register__input-name">
-          Name
           <input
             type="text"
             name="name"
             data-testid="common_register__input-name"
             onChange={ handleChange }
+            placeholder="Nome"
+            className="inputs-login"
           />
         </label>
         <label htmlFor="common_register__input-email">
-          Email
           <input
             type="text"
             name="email"
             data-testid="common_register__input-email"
             onChange={ handleChange }
+            placeholder="Email"
+            className="inputs-login"
           />
         </label>
         <label htmlFor="common_register__input-password">
-          Senha
           <input
-            type="text"
+            type="password"
             name="password"
             onChange={ handleChange }
             data-testid="common_register__input-password"
+            placeholder="Senha"
+            className="inputs-login"
           />
         </label>
         <button
@@ -74,8 +79,9 @@ function Register() {
           data-testid="common_register__button-register"
           disabled={ !validateForm() }
           onClick={ login }
+          className="button-register"
         >
-          CADASTRO
+          CADASTRAR
         </button>
         {showError && (
           <p data-testid="common_register__element-invalid_register">error message</p>
