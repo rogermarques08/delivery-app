@@ -1,0 +1,55 @@
+h1 {
+  color: #ffe100;
+}
+
+.login-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.login-input {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+.inputs-login {
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  padding: 5px;
+}
+
+.button-login-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.button-login-container :nth-child( 1 ) {
+  background-color: #ffe100;
+  border: none;
+  border-radius: 5px;
+  color: #292929;
+  font-weight: 700;
+}
+
+.button-login-container :nth-child( 2 ) {
+  background-color: #292929;
+  border: none;
+  color: white;
+  text-decoration: underline;
+}
+
+.button-login-container :nth-child( 1 ):disabled {
+  background-color: grey;
+}
+

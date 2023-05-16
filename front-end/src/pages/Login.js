@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import '../styles/LoginStyle.css';
 import getData from '../utils/getData';
 import getLocalStorage from '../utils/getLocalStorage';
 import setLogin from '../utils/loginLocalStorage';
@@ -46,43 +47,48 @@ function Login() {
   }, [history]);
 
   return (
-    <div>
-      <h1>LOGO</h1>
-      <h2>Nome do APP</h2>
-      <form>
+    <div className="login-container">
+      <h1>logo</h1>
+      <h1>Teste Delivery</h1>
+      <form className="login-input">
         <label htmlFor="common_login__input-email">
-          Login
           <input
             type="text"
             name="email"
             data-testid="common_login__input-email"
             onChange={ handleChange }
+            placeholder="Email"
+            className="inputs-login"
           />
         </label>
         <label htmlFor="common_login__input-password">
-          Senha
           <input
             type="text"
             name="password"
             onChange={ handleChange }
             data-testid="common_login__input-password"
+            placeholder="Senha"
+            className="inputs-login"
           />
         </label>
-        <button
-          type="button"
-          data-testid="common_login__button-login"
-          disabled={ !validateForm() }
-          onClick={ login }
-        >
-          LOGIN
-        </button>
-        <button
-          type="button"
-          data-testid="common_login__button-register"
-          onClick={ () => history.push('register') }
-        >
-          Ainda não tenho conta
-        </button>
+        <div className="button-login-container">
+          <button
+            type="button"
+            data-testid="common_login__button-login"
+            disabled={ !validateForm() }
+            onClick={ login }
+            className="button-login"
+          >
+            LOGIN
+          </button>
+          <button
+            type="button"
+            data-testid="common_login__button-register"
+            onClick={ () => history.push('register') }
+          >
+            Ainda não tenho conta
+          </button>
+        </div>
       </form>
       {showError && (
         <p data-testid="common_login__element-invalid-email">error message</p>
