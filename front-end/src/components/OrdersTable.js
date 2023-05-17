@@ -15,6 +15,7 @@ function OrdersTable() {
 
   const removeItem = (id) => {
     const newCart = productsOnCart.filter((product) => product.id !== id);
+    delete quantities[id];
 
     const newTotal = newCart.reduce((acc, curr) => {
       const quantity = quantities[curr.id] || 0;

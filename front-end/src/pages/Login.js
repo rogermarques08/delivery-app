@@ -63,7 +63,7 @@ function Login() {
         </label>
         <label htmlFor="common_login__input-password">
           <input
-            type="text"
+            type="password"
             name="password"
             onChange={ handleChange }
             data-testid="common_login__input-password"
