@@ -60,16 +60,39 @@ img {
   background-color: #ffe100;
   border: 1px solid #ffe100;
   border-radius: 4px;
+  cursor: pointer;
   font-weight: 900;
   height: 30px;
   width: 25px;
 }
 
+.increment:hover {
+  background-color: #e2c802;
+  scale: 1.1;
+  transition-duration: 0.1s;
+}
 
 .cart-button {
-  background-color: purple;
+  background-color: #ffe100;
+  border: none;
+  border-radius: 5px;
   bottom: 0;
+  box-shadow: 5px 5px 10px black;
+  font-weight: 700;
+  height: 40px;
   margin: 10px;
   position: fixed;
   right: 0;
+  transition-duration: 0.1s;
+}
+
+.cart-button:disabled {
+  background-color: #ffef7a;
+}
+
+.cart-button:hover {
+  background-color: #e2c802;
+  cursor: pointer;
+  scale: 1.1;
+  transition-duration: 0.1s;
 }

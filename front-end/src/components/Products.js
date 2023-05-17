@@ -69,12 +69,10 @@ function Products() {
         disabled={ total === 0.00 }
         className="cart-button"
       >
-        Ver Carriho
-        {' '}
         <span
           data-testid="customer_products__checkout-bottom-value"
         >
-          {total.toFixed(2).replace('.', ',')}
+          {`Carrinho R$${total.toFixed(2).replace('.', ',')}`}
         </span>
       </button>
     </div>

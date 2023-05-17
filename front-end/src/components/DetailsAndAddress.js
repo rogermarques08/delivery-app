@@ -58,9 +58,9 @@ function DetailsAndOrders() {
   };
 
   return (
-    <form>
+    <form className="address-form">
       <label htmlFor="sellers">
-        P. Vendedora Responśavel
+        <p className="label">P. Vendedora Responśavel</p>
         <select
           name="sellerId"
           id="sellers"
@@ -72,36 +72,41 @@ function DetailsAndOrders() {
           ))}
         </select>
       </label>
-      <label htmlFor="address">
-        Endereço
-        <input
-          type="text"
-          name="deliveryAddress"
-          onChange={ handleChange }
-          value={ orderInfos.deliveryAddress }
-          id="address"
-          placeholder="Geraldo Campos Pereira, Alta Vista"
-          data-testid="customer_checkout__input-address"
-        />
-      </label>
-      <label htmlFor="number">
-        Número
-        <input
-          type="number"
-          name="deliveryNumber"
-          id="number"
-          placeholder="193"
-          onChange={ handleChange }
-          value={ orderInfos.deliveryNumber }
-          data-testid="customer_checkout__input-address-number"
-        />
-      </label>
+      <div className="addres-inputs">
+        <label htmlFor="address">
+          <p className="label">Endereço</p>
+          <input
+            type="text"
+            name="deliveryAddress"
+            onChange={ handleChange }
+            value={ orderInfos.deliveryAddress }
+            id="address"
+            placeholder="Geraldo Campos Pereira, Alta Vista"
+            data-testid="customer_checkout__input-address"
+            className="inputs-login"
+          />
+        </label>
+        <label htmlFor="number">
+          <p className="label">Número</p>
+          <input
+            type="number"
+            name="deliveryNumber"
+            id="number"
+            placeholder="193"
+            onChange={ handleChange }
+            value={ orderInfos.deliveryNumber }
+            data-testid="customer_checkout__input-address-number"
+            className="inputs-login input-number"
+          />
+        </label>
+      </div>
       <button
         type="button"
         data-testid="customer_checkout__button-submit-order"
         onClick={ createSale }
+        className="finish-order"
       >
-        Finalizar Pedido
+        Finalizar
       </button>
 
     </form>

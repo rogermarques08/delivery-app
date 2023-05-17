@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { BsFillTrash3Fill } from 'react-icons/bs';
 import DeliveryContext from '../context/DeliveryContext';
 
 function OrdersTable() {
@@ -25,7 +26,7 @@ function OrdersTable() {
   };
 
   return (
-    <table>
+    <table className="checkout-table">
       <thead>
         <tr>
           <th>Item</th>
@@ -38,7 +39,7 @@ function OrdersTable() {
       </thead>
       <tbody>
         {productsOnCart.map((product, index) => (
-          <tr key={ product.id }>
+          <tr key={ product.id } className="item-table">
             <td
               data-testid={
                 `customer_checkout__element-order-table-item-number-${index}`
@@ -57,18 +58,23 @@ function OrdersTable() {
             <td
               data-testid={ `customer_checkout__element-order-table-unit-price-${index}` }
             >
-              {product.price.replace('.', ',')}
+              {`R$${product.price.replace('.', ',')}`}
             </td>
             <td
               data-testid={ `customer_checkout__element-order-table-sub-total-${index}` }
             >
-              {(product.price * quantities[product.id]).toFixed(2).replace('.', ',') }
+              {`R$${(product.price * quantities[product.id])
+                .toFixed(2).replace('.', ',')}` }
             </td>
             <td
               data-testid={ `customer_checkout__element-order-table-remove-${index}` }
             >
-              <button type="button" onClick={ () => removeItem(product.id) }>
-                Remover
+              <button
+                type="button"
+                className="remove-item-table-btn"
+                onClick={ () => removeItem(product.id) }
+              >
+                <BsFillTrash3Fill />
               </button>
             </td>
           </tr>

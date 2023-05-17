@@ -1,0 +1,98 @@
+.checkout-container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.checkout-title {
+  color: white;
+}
+
+.checkout {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+table {
+  margin-top: 20px;
+}
+
+thead {
+  background-color: #ffef7a;
+  border: none;
+}
+
+th {
+  font-size: 16px;
+  padding: 2px;
+}
+
+td {
+  font-size: 16px;
+  padding: 1px;
+  text-align: center;
+}
+
+.item-table {
+  background-color: whitesmoke;
+}
+
+.remove-item-table-btn {
+  border: none;
+}
+
+.total-price {
+  color: #ffe100;
+  font-size: 30px;
+  font-weight: 700;
+  margin: 10px 0 0 420px;
+}
+
+.address-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 8px 0 0;
+}
+
+.label {
+  color: #ffef7a;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.addres-inputs {
+  display: flex;
+  gap: 10px;
+}
+
+select {
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  padding: 5px;
+}
+
+.input-number {
+  width: 63px;
+}
+
+.finish-order {
+  background-color: #ffe100;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 30px;
+  transition-duration: 0.1s;
+}
+
+.finish-order:hover {
+  background-color: #e2c802;
+  scale: 1.1;
+  transition-duration: 0.1s;
+}
+
