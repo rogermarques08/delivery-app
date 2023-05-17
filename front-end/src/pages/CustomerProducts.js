@@ -21,10 +21,12 @@ function CustomerProducts() {
   }, [setProducts]);
 
   return (
-    <header>
-      <NavBar />
+    <>
+      <header>
+        <NavBar />
+      </header>
       <Products />
-    </header>
+    </>
   );
 }
 
