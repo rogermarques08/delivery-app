@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import NavBar from '../components/NavBar';
+import '../styles/ProductsDetailsStyle.css';
 import getData, { getProducts } from '../utils/getData';
 import getLocalStorage from '../utils/getLocalStorage';
 
@@ -40,10 +41,10 @@ function ProductsDetails() {
   };
 
   return (
-    <>
+    <div className="details-container">
       <NavBar />
-      <h1>Detalhe do Pedido</h1>
-      <div>
+      <h1 className="details-title">Detalhe do Pedido</h1>
+      <div className="details">
         <p
           data-testid={ `${role}_order_details__element-order-details-label-order-id` }
         >
@@ -79,6 +80,7 @@ function ProductsDetails() {
             data-testid="customer_order_details__button-delivery-check"
             disabled={ saleStatus !== 'Em Trânsito' }
             onClick={ () => handleStatus(id, 'Entregue') }
+            className="update-status-btn"
           >
             Marcar Como Entregue
           </button>)}
@@ -117,7 +119,7 @@ function ProductsDetails() {
         </thead>
         <tbody>
           {saleDetail?.products?.map((product, index) => (
-            <tr key={ product.id }>
+            <tr key={ product.id } className="item-table">
               <td
                 data-testid={
                   `${role}_order_details__element-order-table-item-number-${index}`
@@ -154,14 +156,17 @@ function ProductsDetails() {
           ))}
         </tbody>
       </table>
-      <p data-testid={ `${role}_order_details__element-order-total-price` }>
+      <p
+        data-testid={ `${role}_order_details__element-order-total-price` }
+        className="total-price"
+      >
         Total:
         {' '}
         R$
         {saleDetail?.totalPrice?.replace('.', ',')}
 
       </p>
-    </>
+    </div>
   );
 }
 
