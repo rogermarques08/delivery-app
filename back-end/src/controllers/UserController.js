@@ -10,13 +10,13 @@ const login = async (req, res) => {
     const { email, password } = req.body;
 
     if (!emailPass(email, password)) {
-      return res.status(404).json({ message: 'Not found' });
+      return res.status(404).json({ message: 'Infomações do usuário inválidas' });
     }
 
     const user = await UserService.login(email, password);
 
     if (!user || user.password !== md5(password)) {
-      return res.status(404).json({ message: 'Not found' });
+      return res.status(404).json({ message: 'Infomações do usuário inválidas' });
     }
     const { id, password: _, ...dataUsers } = user.dataValues;
 
@@ -33,7 +33,7 @@ const createNewUser = async (req, res) => {
 
     const hasEmail = await UserService.login(email);
     if (hasEmail) {
-      return res.status(409).json({ message: 'Conflict' });
+      return res.status(409).json({ message: 'Email já cadastrado' });
     }
     const newUser = await UserService.createNewUser({
       name,

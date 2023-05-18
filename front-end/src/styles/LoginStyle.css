@@ -64,3 +64,13 @@ h1 {
   transition-duration: 0.1s;
 }
 
+.button-login-container :nth-child( 1 ):enabled:hover {
+  background-color: #61541d;
+  scale: 1.2;
+}
+
+.error-message {
+  color: #9e3333;
+  font-size: 18px;
+  font-weight: 700;
+}

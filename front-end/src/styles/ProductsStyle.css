@@ -22,6 +22,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   width: 225px;
 }
 
+
 .products-card :nth-child( 1 ) {
   font-size: 17px;
   height: 30px;
@@ -87,11 +88,11 @@ img {
 }
 
 .cart-button:disabled {
-  background-color: #ffef7a;
+  background-color: silver;
 }
 
 .cart-button:hover {
-  background-color: #e2c802;
+  background-color: #574b18;
   cursor: pointer;
   scale: 1.1;
   transition-duration: 0.1s;

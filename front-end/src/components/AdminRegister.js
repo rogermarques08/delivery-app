@@ -32,7 +32,7 @@ function AdminRegister() {
   const register = async () => {
     const data = await getData('POST', form, '/register', token);
 
-    if (data.message) return setShowError(true);
+    if (data.message) return setShowError(data.message);
   };
 
   return (
@@ -89,7 +89,12 @@ function AdminRegister() {
           CADASTRAR
         </button>
         {showError && (
-          <p data-testid="admin_manage__element-invalid-register">error message</p>
+          <p
+            data-testid="admin_manage__element-invalid-register"
+            className="error-message"
+          >
+            {showError}
+          </p>
         )}
       </form>
     </div>

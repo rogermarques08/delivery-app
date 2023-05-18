@@ -32,7 +32,7 @@ function Login() {
   const login = async () => {
     const data = await getData('POST', form, '/login');
 
-    if (data.message) return setShowError(true);
+    if (data.message) return setShowError(data.message);
 
     setLogin(data);
 
@@ -91,7 +91,12 @@ function Login() {
         </div>
       </form>
       {showError && (
-        <p data-testid="common_login__element-invalid-email">error message</p>
+        <p
+          data-testid="common_login__element-invalid-email"
+          className="error-message"
+        >
+          {showError}
+        </p>
       )}
     </div>
   );

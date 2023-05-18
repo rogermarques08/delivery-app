@@ -48,7 +48,6 @@ function OrdersCards() {
                 data-testid={ `seller_orders__element-card-address-${order.id}` }
               >
                 {order.deliveryAddress}
-                ,
                 {' '}
                 {order.deliveryNumber}
               </p>

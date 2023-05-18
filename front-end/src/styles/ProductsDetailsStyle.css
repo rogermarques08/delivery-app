@@ -48,3 +48,40 @@
   font-size: 16px;
   font-weight: 800;
 }
+
+.prepare-order-btn {
+  background-color: #2d54eb;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.prepare-order-btn:disabled {
+  background-color: whitesmoke;
+  border: 1px solid gray;
+  color: gray;
+  font-weight: 400;
+}
+
+.prepare-order-btn:enabled:hover {
+  background-color: #2545c7;
+
+}
+
+.delivery-btn {
+  background-color: green;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.delivery-btn:disabled {
+  background-color: whitesmoke;
+  border: 1px solid gray;
+  color: gray;
+  font-weight: 400;
+}

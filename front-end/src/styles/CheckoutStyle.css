@@ -20,7 +20,7 @@ table {
 }
 
 thead {
-  background-color: #ffef7a;
+  background-color: #ffe100;
   border: none;
 }
 
@@ -40,14 +40,19 @@ td {
 }
 
 .remove-item-table-btn {
+  background-color: whitesmoke;
   border: none;
+  cursor: pointer;
 }
 
 .total-price {
   color: #ffe100;
+  display: flex;
   font-size: 30px;
   font-weight: 700;
-  margin: 10px 0 0 420px;
+  justify-content: flex-end;
+  margin: 20px;
+  width: 90%;
 }
 
 .address-form {
@@ -58,9 +63,10 @@ td {
 }
 
 .label {
-  color: #ffef7a;
+  color: #ffe100;
   font-size: 17px;
   font-weight: 500;
+  margin-bottom: 8px;
 }
 
 .addres-inputs {

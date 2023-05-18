@@ -80,7 +80,7 @@ function ProductsDetails() {
             data-testid="customer_order_details__button-delivery-check"
             disabled={ saleStatus !== 'Em Trânsito' }
             onClick={ () => handleStatus(id, 'Entregue') }
-            className="update-status-btn"
+            className="delivery-btn"
           >
             Marcar Como Entregue
           </button>)}
@@ -92,6 +92,7 @@ function ProductsDetails() {
               data-testid="seller_order_details__button-preparing-check"
               disabled={ saleStatus !== 'Pendente' }
               onClick={ () => handleStatus(id, 'Preparando') }
+              className="prepare-order-btn"
             >
               PREPARAR PEDIDO
             </button>
@@ -100,9 +101,9 @@ function ProductsDetails() {
               data-testid="seller_order_details__button-dispatch-check"
               disabled={ saleStatus !== 'Preparando' }
               onClick={ () => handleStatus(id, 'Em Trânsito') }
+              className="delivery-btn"
             >
               SAIU PARA ENTREGA
-
             </button>
           </>
         ) }

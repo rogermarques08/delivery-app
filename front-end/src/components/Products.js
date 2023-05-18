@@ -13,11 +13,11 @@ function Products() {
   } = useContext(DeliveryContext);
 
   const history = useHistory();
-  const maxLenthProducts = 10;
+  const maxLenthProducts = 11;
 
   return (
     <div className="products-container">
-      {products?.slice(0, maxLenthProducts).map((product) => (
+      {products?.slice(1, maxLenthProducts).map((product) => (
         <div key={ product.id } className="products-card">
           <h1
             data-testid={ `customer_products__element-card-title-${product.id}` }

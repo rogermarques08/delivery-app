@@ -2,11 +2,26 @@ nav {
   align-items: center;
   background-color: whitesmoke;
   display: flex;
+  font-size: 18px;
   height: 60px;
   justify-content: space-between;
   position: fixed;
   top: 0;
   width: 100vw;
+}
+
+.logo-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 43%;
+}
+
+.user-container {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 20px;
+  width: 30%;
 }
 
 .logo {
@@ -15,8 +30,22 @@ nav {
 }
 
 .nav-item {
+  align-items: center;
   background-color: whitesmoke;
   border: none;
   color: black;
+  cursor: pointer;
+  display: flex;
+  font-size: 20px;
   font-weight: 500;
+  gap: 2px;
+  height: 100%;
+  justify-content: center;
+  transition-duration: 0.1s;
+
+}
+
+.nav-item:hover {
+  scale: 1.1;
+  transition-duration: 0.1s;
 }

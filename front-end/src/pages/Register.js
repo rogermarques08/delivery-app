@@ -34,7 +34,7 @@ function Register() {
   const login = async () => {
     const data = await getData('POST', form, '/register');
 
-    if (data.message) return setShowError(true);
+    if (data.message) return setShowError(data.message);
 
     setLogin(data);
     history.push('customer/products');
@@ -85,7 +85,13 @@ function Register() {
           CADASTRAR
         </button>
         {showError && (
-          <p data-testid="common_register__element-invalid_register">error message</p>
+          <p
+            data-testid="common_register__element-invalid_register"
+            className="error-message"
+          >
+            {showError}
+
+          </p>
         )}
       </form>
     </div>

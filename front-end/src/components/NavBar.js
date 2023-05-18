@@ -1,4 +1,8 @@
 import { useEffect, useState } from 'react';
+import { AiOutlineUser } from 'react-icons/ai';
+import { FiLogOut } from 'react-icons/fi';
+import { IoIosPint } from 'react-icons/io';
+import { TbClipboardText } from 'react-icons/tb';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import logo from '../images/logo2.png';
 import '../styles/NavBar.css';
@@ -22,8 +26,8 @@ function NavBar() {
 
   return (
     <nav>
-      <div>
-
+      <div className="logo-container">
+        <img src={ logo } alt="logo" className="logo" />
         {user.role === 'customer' && (
           <button
             type="button"
@@ -31,6 +35,7 @@ function NavBar() {
             onClick={ () => history.push('/customer/products') }
             className="nav-item"
           >
+            <IoIosPint />
             Produtos
           </button>
         )}
@@ -41,10 +46,13 @@ function NavBar() {
             onClick={ () => history.push(`/${user.role}/orders`) }
             className="nav-item"
           >
+            <TbClipboardText />
             {user.role === 'customer' ? ' Meus pedidos' : 'Pedidos' }
           </button>
         )}
-        {user.role === 'administrator' && (
+      </div>
+      <div className="user-container">
+        {/* {user.role === 'administrator' && (
           <button
             type="button"
             data-testid="customer_products__element-navbar-link-orders"
@@ -53,15 +61,13 @@ function NavBar() {
           >
             Gerenciar Usuários
           </button>
-        )}
-      </div>
-      <img src={ logo } alt="logo" className="logo" />
-      <div>
+        )} */}
         <button
           type="button"
           data-testid="customer_products__element-navbar-user-full-name"
           className="nav-item"
         >
+          <AiOutlineUser />
           {user.name}
         </button>
         <button
@@ -70,7 +76,8 @@ function NavBar() {
           onClick={ logOut }
           className="nav-item"
         >
-          LogOut
+          <FiLogOut />
+          Sair
         </button>
 
       </div>
