@@ -37,36 +37,38 @@ function AdminRegister() {
 
   return (
     <div>
-      <form>
+      <form className="admin-form">
         <label htmlFor="admin_manage__input-name">
-          Name
           <input
             type="text"
             name="name"
             data-testid="admin_manage__input-name"
             onChange={ handleChange }
+            placeholder="Nome"
+            className="inputs-login"
           />
         </label>
         <label htmlFor="admin_manage__input-email">
-          Email
           <input
             type="text"
             name="email"
             data-testid="admin_manage__input-email"
             onChange={ handleChange }
+            placeholder="Email"
+            className="inputs-login"
           />
         </label>
         <label htmlFor="admin_manage__input-password">
-          Senha
           <input
             type="text"
             name="password"
             onChange={ handleChange }
             data-testid="admin_manage__input-password"
+            placeholder="Senha"
+            className="inputs-login"
           />
         </label>
         <label htmlFor="admin_manage__select-role">
-          Tipo
           <select
             name="role"
             data-testid="admin_manage__select-role"
@@ -82,6 +84,7 @@ function AdminRegister() {
           data-testid="admin_manage__button-register"
           disabled={ !validateForm() }
           onClick={ register }
+          className="register-user"
         >
           CADASTRAR
         </button>

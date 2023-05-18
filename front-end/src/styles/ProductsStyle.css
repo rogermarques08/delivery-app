@@ -18,7 +18,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   flex-direction: column;
   height: 250px;
   justify-content: center;
-  margin: 70px 0 30px;
+  margin: 70px 0 -50px;
   width: 225px;
 }
 

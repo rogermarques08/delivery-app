@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { BsFillTrash3Fill } from 'react-icons/bs';
 import { getProducts } from '../utils/getData';
 import getLocalStorage from '../utils/getLocalStorage';
 
@@ -32,7 +33,7 @@ function UsersTable() {
       </thead>
       <tbody>
         {users?.map((user, index) => (
-          <tr key={ user.id }>
+          <tr key={ user.id } className="item-table">
             <td
               data-testid={
                 `admin_manage__element-user-table-item-number-${index}`
@@ -66,8 +67,9 @@ function UsersTable() {
                 type="button"
                 data-testid={ `admin_manage__element-user-table-remove-${index}` }
                 onClick={ () => removeUser(user.id) }
+                className="remove-item-table-btn"
               >
-                Excluir
+                <BsFillTrash3Fill />
               </button>
             </td>
           </tr>

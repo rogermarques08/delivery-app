@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import logo from '../images/logo.png';
 import '../styles/RegisterStyle.css';
 import getData from '../utils/getData';
 import setLogin from '../utils/loginLocalStorage';
@@ -41,9 +42,9 @@ function Register() {
 
   return (
     <div className="register-container">
-      <h1>LOGO</h1>
+      <img src={ logo } alt="logo" style={ { marginBottom: '50px' } } />
       <form className="register-form">
-        <h1>Cadastro</h1>
+        {/* <h1>Cadastro</h1> */}
         <label htmlFor="common_register__input-name">
           <input
             type="text"

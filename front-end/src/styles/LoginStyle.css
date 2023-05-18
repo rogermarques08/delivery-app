@@ -40,21 +40,27 @@ h1 {
 }
 
 .button-login-container :nth-child( 1 ) {
-  background-color: #ffe100;
+  background-color: #716221;
   border: none;
   border-radius: 5px;
-  color: #292929;
+  color: black;
+  cursor: pointer;
   font-weight: 700;
+  scale: 1.1;
+  transition-duration: 0.1s;
 }
 
 .button-login-container :nth-child( 2 ) {
-  background-color: #292929;
+  background-color: #1b1b1b;
   border: none;
   color: white;
+  cursor: pointer;
   text-decoration: underline;
 }
 
 .button-login-container :nth-child( 1 ):disabled {
-  background-color: grey;
+  background-color: silver;
+  scale: 1;
+  transition-duration: 0.1s;
 }
 

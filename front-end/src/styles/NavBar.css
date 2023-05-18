@@ -1,13 +1,21 @@
 nav {
-  background-color: #ffe100;
-  height: 50px;
+  align-items: center;
+  background-color: whitesmoke;
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
   position: fixed;
   top: 0;
   width: 100vw;
 }
 
+.logo {
+  height: 55px;
+  object-fit: contain;
+}
+
 .nav-item {
-  background-color: #ffe100;
+  background-color: whitesmoke;
   border: none;
   color: black;
   font-weight: 500;

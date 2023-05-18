@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import logo from '../images/logo.png';
 import '../styles/LoginStyle.css';
 import getData from '../utils/getData';
 import getLocalStorage from '../utils/getLocalStorage';
@@ -48,8 +49,7 @@ function Login() {
 
   return (
     <div className="login-container">
-      <h1>logo</h1>
-      <h1>Teste Delivery</h1>
+      <img src={ logo } alt="logo" />
       <form className="login-input">
         <label htmlFor="common_login__input-email">
           <input

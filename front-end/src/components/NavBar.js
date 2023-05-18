@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import logo from '../images/logo2.png';
 import '../styles/NavBar.css';
 import getLocalStorage from '../utils/getLocalStorage';
 
@@ -21,51 +22,58 @@ function NavBar() {
 
   return (
     <nav>
-      {user.role === 'customer' && (
+      <div>
+
+        {user.role === 'customer' && (
+          <button
+            type="button"
+            data-testid="customer_products__element-navbar-link-products"
+            onClick={ () => history.push('/customer/products') }
+            className="nav-item"
+          >
+            Produtos
+          </button>
+        )}
+        {user.role !== 'administrator' && (
+          <button
+            type="button"
+            data-testid="customer_products__element-navbar-link-orders"
+            onClick={ () => history.push(`/${user.role}/orders`) }
+            className="nav-item"
+          >
+            {user.role === 'customer' ? ' Meus pedidos' : 'Pedidos' }
+          </button>
+        )}
+        {user.role === 'administrator' && (
+          <button
+            type="button"
+            data-testid="customer_products__element-navbar-link-orders"
+            onClick={ () => history.push('/admin/manage') }
+            className="nav-item"
+          >
+            Gerenciar Usuários
+          </button>
+        )}
+      </div>
+      <img src={ logo } alt="logo" className="logo" />
+      <div>
         <button
           type="button"
-          data-testid="customer_products__element-navbar-link-products"
-          onClick={ () => history.push('/customer/products') }
+          data-testid="customer_products__element-navbar-user-full-name"
           className="nav-item"
         >
-          Produtos
+          {user.name}
         </button>
-      )}
-      {user.role !== 'administrator' && (
         <button
           type="button"
-          data-testid="customer_products__element-navbar-link-orders"
-          onClick={ () => history.push(`/${user.role}/orders`) }
+          data-testid="customer_products__element-navbar-link-logout"
+          onClick={ logOut }
           className="nav-item"
         >
-          {user.role === 'customer' ? ' Meus pedidos' : 'Pedidos' }
+          LogOut
         </button>
-      )}
-      {user.role === 'administrator' && (
-        <button
-          type="button"
-          data-testid="customer_products__element-navbar-link-orders"
-          onClick={ () => history.push('/admin/manage') }
-          className="nav-item"
-        >
-          Gerenciar Usuários
-        </button>
-      )}
-      <button
-        type="button"
-        data-testid="customer_products__element-navbar-user-full-name"
-        className="nav-item"
-      >
-        {user.name}
-      </button>
-      <button
-        type="button"
-        data-testid="customer_products__element-navbar-link-logout"
-        onClick={ logOut }
-        className="nav-item"
-      >
-        LogOut
-      </button>
+
+      </div>
     </nav>
   );
 }
