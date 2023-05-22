@@ -1,6 +1,5 @@
 .checkout-container {
   height: 100vh;
-  width: 100vw;
 }
 
 .checkout-title {
@@ -16,6 +15,7 @@
 }
 
 table {
+  border-collapse: collapse;
   margin-top: 20px;
 }
 
@@ -25,14 +25,17 @@ thead {
 }
 
 th {
+  border-bottom: 1px solid gray;
   font-size: 16px;
   padding: 2px;
 }
 
 td {
+  border-bottom: 1px solid gray;
   font-size: 16px;
   padding: 5px;
   text-align: center;
+
 }
 
 .item-table {
@@ -102,3 +105,14 @@ select {
   transition-duration: 0.1s;
 }
 
+@media ( max-width : 600px ) {
+
+  th {
+    font-size: 12px;
+  }
+
+  td {
+    font-size: 12px;
+
+  }
+}

@@ -8,6 +8,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
+  padding: 30px 0 115px;
+
 }
 
 .products-card {
@@ -22,11 +24,11 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   width: 225px;
 }
 
-
 .products-card :nth-child( 1 ) {
   font-size: 17px;
   height: 30px;
   text-align: center;
+
 }
 
 img {
@@ -96,4 +98,17 @@ img {
   cursor: pointer;
   scale: 1.1;
   transition-duration: 0.1s;
+}
+
+@media ( max-width : 600px ) {
+
+  .products-card {
+    width: 170px;
+  }
+
+  .products-card :nth-child( 1 ) {
+    height: 38px;
+
+  }
+
 }

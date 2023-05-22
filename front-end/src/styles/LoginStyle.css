@@ -1,11 +1,6 @@
 h1 {
-  color: #ffe100;
+  color: whitesmoke;
 }
-
-/* img {
-  mix-blend-mode: color-burn;
-  object-fit: contain;
-} */
 
 .login-container {
   align-items: center;

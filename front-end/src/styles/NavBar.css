@@ -1,51 +1,106 @@
+/* stylelint-disable selector-max-specificity */
 nav {
   align-items: center;
   background-color: whitesmoke;
   display: flex;
-  font-size: 18px;
   height: 60px;
   justify-content: space-between;
   position: fixed;
   top: 0;
-  width: 100vw;
+  width: 100%;
+
 }
 
-.logo-container {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  width: 43%;
-}
-
-.user-container {
-  display: flex;
-  justify-content: space-between;
-  margin-right: 20px;
-  width: 30%;
+#nav-check {
+  display: none;
 }
 
 .logo {
+  display: inline;
   height: 55px;
   object-fit: contain;
 }
 
-.nav-item {
+nav > .nav-btn {
+  display: none;
+}
+
+nav > .nav-links {
+  display: flex;
+  font-size: 18px;
+  justify-content: space-around;
+  width: 750px;
+}
+
+nav > .nav-links > .nav-item {
   align-items: center;
   background-color: whitesmoke;
   border: none;
-  color: black;
   cursor: pointer;
   display: flex;
   font-size: 20px;
   font-weight: 500;
   gap: 2px;
-  height: 100%;
-  justify-content: center;
+  text-decoration: none;
   transition-duration: 0.1s;
-
 }
 
-.nav-item:hover {
+nav > .nav-links > .nav-item:hover {
   scale: 1.1;
   transition-duration: 0.1s;
+}
+
+@media ( max-width : 600px ) {
+
+  nav > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  nav > .nav-btn > label {
+    display: inline-block;
+    height: 50px;
+    padding: 13px;
+    width: 50px;
+  }
+
+  nav > .nav-btn > label:hover, nav #nav-check:checked ~ .nav-btn > label {
+    background-color: whitesmoke;
+  }
+
+  nav > .nav-btn > label > span {
+    border-top: 2px solid black;
+    display: block;
+    height: 10px;
+    width: 25px;
+  }
+
+  nav > .nav-links {
+    align-items: center;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    height: 0;
+    left: 0;
+    overflow-y: hidden;
+    position: absolute;
+    top: 50px;
+    transition: all 0.3s ease-in;
+    width: 100%;
+  }
+
+  nav > .nav-links > button {
+    display: block;
+  }
+
+  nav > #nav-check:not( :checked ) ~ .nav-links {
+    height: 0;
+  }
+
+  nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
 }

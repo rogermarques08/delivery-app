@@ -26,8 +26,16 @@ function NavBar() {
 
   return (
     <nav>
-      <div className="logo-container">
-        <img src={ logo } alt="logo" className="logo" />
+      <input type="checkbox" id="nav-check" />
+      <img src={ logo } alt="logo" className="logo" />
+      <div className="nav-btn">
+        <label htmlFor="nav-check">
+          <span />
+          <span />
+          <span />
+        </label>
+      </div>
+      <div className="nav-links">
         {user.role === 'customer' && (
           <button
             type="button"
@@ -50,8 +58,6 @@ function NavBar() {
             {user.role === 'customer' ? ' Meus pedidos' : 'Pedidos' }
           </button>
         )}
-      </div>
-      <div className="user-container">
         {/* {user.role === 'administrator' && (
           <button
             type="button"
@@ -79,7 +85,6 @@ function NavBar() {
           <FiLogOut />
           Sair
         </button>
-
       </div>
     </nav>
   );
